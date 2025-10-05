@@ -1,0 +1,29 @@
+================================================================================
+LOG DE FALHAS - AUTOMAÇÃO PORTO SEGURO
+Data/Hora: 05/10/2025 17:48:12
+================================================================================
+
+
+────────────────────────────────────────────────────────────────────────────────
+GUIA: 32974613
+Data/Hora: 05/10/2025 17:49:47
+Motivo: Erro inesperado no fluxo
+
+Traceback:
+Traceback (most recent call last):
+  File "c:\Users\kelvi\Downloads\Automacao-Clinica-Odontologica\PortoSeguro\main.py", line 413, in processar_guias_da_planilha
+    if not bot.submeter_para_pagamento():
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'PortoSeguroBot' object has no attribute 'submeter_para_pagamento'
+
+────────────────────────────────────────────────────────────────────────────────
+
+
+================================================================================
+RESUMO DE FALHAS
+================================================================================
+
+Total de falhas registradas: 1
+
+Guias que necessitam verificação manual:
+1. Guia 32974613 - Erro inesperado no fluxo

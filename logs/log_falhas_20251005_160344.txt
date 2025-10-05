@@ -1,0 +1,61 @@
+================================================================================
+LOG DE FALHAS - AUTOMAÇÃO PORTO SEGURO
+Data/Hora: 05/10/2025 16:03:44
+================================================================================
+
+
+────────────────────────────────────────────────────────────────────────────────
+GUIA: 32992599
+Data/Hora: 05/10/2025 16:05:24
+Motivo: Falha ao confirmar realização (DATA INCORRETA?)
+────────────────────────────────────────────────────────────────────────────────
+
+────────────────────────────────────────────────────────────────────────────────
+GUIA: 32992207
+Data/Hora: 05/10/2025 16:06:50
+Motivo: Erro ao anexar arquivos
+
+Traceback:
+Traceback (most recent call last):
+  File "c:\Users\kelvi\Downloads\Automacao-Clinica-Odontologica\PortoSeguro\main.py", line 247, in anexar_todos_os_arquivos
+    icone_anexo = self.wait.until(EC.element_to_be_clickable((By.XPATH, "//a[i[contains(@class, 'fa-pencil')]]")))
+  File "C:\Users\kelvi\Downloads\Automacao-Clinica-Odontologica\.venv\Lib\site-packages\selenium\webdriver\support\wait.py", line 138, in until
+    raise TimeoutException(message, screen, stacktrace)
+selenium.common.exceptions.TimeoutException: Message: 
+Stacktrace:
+	GetHandleVerifier [0x0xc2c333+65459]
+	GetHandleVerifier [0x0xc2c374+65524]
+	(No symbol) [0x0xa4d973]
+	(No symbol) [0x0xa976e7]
+	(No symbol) [0x0xa97a8b]
+	(No symbol) [0x0xaddea2]
+	(No symbol) [0x0xab9e44]
+	(No symbol) [0x0xadb606]
+	(No symbol) [0x0xab9bf6]
+	(No symbol) [0x0xa8b38e]
+	(No symbol) [0x0xa8c274]
+	GetHandleVerifier [0x0xeaeda3+2697763]
+	GetHandleVerifier [0x0xea9ec7+2677575]
+	GetHandleVerifier [0x0xc54194+228884]
+	GetHandleVerifier [0x0xc449f8+165496]
+	GetHandleVerifier [0x0xc4b18d+192013]
+	GetHandleVerifier [0x0xc347d8+99416]
+	GetHandleVerifier [0x0xc34972+99826]
+	GetHandleVerifier [0x0xc1ebea+10346]
+	BaseThreadInitThunk [0x0x750f5d49+25]
+	RtlInitializeExceptionChain [0x0x773ad6db+107]
+	RtlGetAppContainerNamedObjectPath [0x0x773ad661+561]
+
+
+────────────────────────────────────────────────────────────────────────────────
+
+
+================================================================================
+RESUMO DE FALHAS
+================================================================================
+
+Total de falhas registradas: 2
+
+Guias que necessitam verificação manual:
+1. Guia 32992599 - Falha ao confirmar realização (DATA INCORRETA?)
+2. Guia 32992207 - Erro ao anexar arquivos

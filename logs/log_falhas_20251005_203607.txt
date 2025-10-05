@@ -1,0 +1,72 @@
+================================================================================
+LOG DE FALHAS - AUTOMAÇÃO PORTO SEGURO
+Data/Hora: 05/10/2025 20:36:07
+================================================================================
+
+
+────────────────────────────────────────────────────────────────────────────────
+GUIA: 32991092
+Data/Hora: 05/10/2025 20:38:35
+Motivo: Erro inesperado no fluxo
+
+Traceback:
+Traceback (most recent call last):
+  File "c:\Users\kelvi\Downloads\Automacao-Clinica-Odontologica\PortoSeguro\main.py", line 397, in processar_guias_da_planilha
+    bot.navegar_meus_tratamentos()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "c:\Users\kelvi\Downloads\Automacao-Clinica-Odontologica\PortoSeguro\main.py", line 127, in navegar_meus_tratamentos
+    self.handle_overlays()
+    ~~~~~~~~~~~~~~~~~~~~^^
+  File "c:\Users\kelvi\Downloads\Automacao-Clinica-Odontologica\PortoSeguro\main.py", line 92, in handle_overlays
+    WebDriverWait(self.driver, main_timeout).until(EC.invisibility_of_element_located((By.ID, "spin_modal_overlay")))
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\kelvi\Downloads\Automacao-Clinica-Odontologica\.venv\Lib\site-packages\selenium\webdriver\support\wait.py", line 129, in until
+    value = method(self._driver)
+  File "C:\Users\kelvi\Downloads\Automacao-Clinica-Odontologica\.venv\Lib\site-packages\selenium\webdriver\support\expected_conditions.py", line 556, in _predicate
+    target = driver.find_element(*target)
+  File "C:\Users\kelvi\Downloads\Automacao-Clinica-Odontologica\.venv\Lib\site-packages\selenium\webdriver\remote\webdriver.py", line 926, in find_element
+    return self.execute(Command.FIND_ELEMENT, {"using": by, "value": value})["value"]
+           ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\kelvi\Downloads\Automacao-Clinica-Odontologica\.venv\Lib\site-packages\selenium\webdriver\remote\webdriver.py", line 458, in execute
+    self.error_handler.check_response(response)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^
+  File "C:\Users\kelvi\Downloads\Automacao-Clinica-Odontologica\.venv\Lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 232, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.InvalidSessionIdException: Message: invalid session id: session deleted as the browser has closed the connection
+from disconnected: not connected to DevTools
+  (Session info: chrome=140.0.7339.208); For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#invalidsessionidexception
+Stacktrace:
+	GetHandleVerifier [0x0x120c333+65459]
+	GetHandleVerifier [0x0x120c374+65524]
+	(No symbol) [0x0x102d973]
+	(No symbol) [0x0x101cdf0]
+	(No symbol) [0x0x103b4af]
+	(No symbol) [0x0x10a0775]
+	(No symbol) [0x0x10baef9]
+	(No symbol) [0x0x1099bf6]
+	(No symbol) [0x0x106b38e]
+	(No symbol) [0x0x106c274]
+	GetHandleVerifier [0x0x148eda3+2697763]
+	GetHandleVerifier [0x0x1489ec7+2677575]
+	GetHandleVerifier [0x0x1234194+228884]
+	GetHandleVerifier [0x0x12249f8+165496]
+	GetHandleVerifier [0x0x122b18d+192013]
+	GetHandleVerifier [0x0x12147d8+99416]
+	GetHandleVerifier [0x0x1214972+99826]
+	GetHandleVerifier [0x0x11febea+10346]
+	BaseThreadInitThunk [0x0x750f5d49+25]
+	RtlInitializeExceptionChain [0x0x773ad6db+107]
+	RtlGetAppContainerNamedObjectPath [0x0x773ad661+561]
+
+
+────────────────────────────────────────────────────────────────────────────────
+
+
+================================================================================
+RESUMO DE FALHAS
+================================================================================
+
+Total de falhas registradas: 1
+
+Guias que necessitam verificação manual:
+1. Guia 32991092 - Erro inesperado no fluxo

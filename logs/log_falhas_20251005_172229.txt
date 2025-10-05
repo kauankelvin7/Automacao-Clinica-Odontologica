@@ -1,0 +1,80 @@
+================================================================================
+LOG DE FALHAS - AUTOMAÇÃO PORTO SEGURO
+Data/Hora: 05/10/2025 17:22:29
+================================================================================
+
+
+────────────────────────────────────────────────────────────────────────────────
+GUIA: N/A
+Data/Hora: 05/10/2025 17:24:03
+Motivo: Erro no fluxo de anexo
+
+Traceback:
+Traceback (most recent call last):
+  File "c:\Users\kelvi\Downloads\Automacao-Clinica-Odontologica\PortoSeguro\main.py", line 307, in anexar_todos_os_arquivos
+    self._abrir_modal_anexos()
+    ~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "c:\Users\kelvi\Downloads\Automacao-Clinica-Odontologica\PortoSeguro\main.py", line 247, in _abrir_modal_anexos
+    self.handle_overlays()
+    ~~~~~~~~~~~~~~~~~~~~^^
+  File "c:\Users\kelvi\Downloads\Automacao-Clinica-Odontologica\PortoSeguro\main.py", line 91, in handle_overlays
+    WebDriverWait(self.driver, 2).until(EC.visibility_of_element_located((By.ID, "spin_modal_overlay")))
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\kelvi\Downloads\Automacao-Clinica-Odontologica\.venv\Lib\site-packages\selenium\webdriver\support\wait.py", line 129, in until
+    value = method(self._driver)
+  File "C:\Users\kelvi\Downloads\Automacao-Clinica-Odontologica\.venv\Lib\site-packages\selenium\webdriver\support\expected_conditions.py", line 217, in _predicate
+    return _element_if_visible(driver.find_element(*locator))
+                               ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^
+  File "C:\Users\kelvi\Downloads\Automacao-Clinica-Odontologica\.venv\Lib\site-packages\selenium\webdriver\remote\webdriver.py", line 926, in find_element
+    return self.execute(Command.FIND_ELEMENT, {"using": by, "value": value})["value"]
+           ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\kelvi\Downloads\Automacao-Clinica-Odontologica\.venv\Lib\site-packages\selenium\webdriver\remote\webdriver.py", line 458, in execute
+    self.error_handler.check_response(response)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^
+  File "C:\Users\kelvi\Downloads\Automacao-Clinica-Odontologica\.venv\Lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 232, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.InvalidSessionIdException: Message: invalid session id: session deleted as the browser has closed the connection
+from disconnected: not connected to DevTools
+  (Session info: chrome=140.0.7339.208); For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#invalidsessionidexception
+Stacktrace:
+	GetHandleVerifier [0x0x86c333+65459]
+	GetHandleVerifier [0x0x86c374+65524]
+	(No symbol) [0x0x68d973]
+	(No symbol) [0x0x67cdf0]
+	(No symbol) [0x0x69b4af]
+	(No symbol) [0x0x700775]
+	(No symbol) [0x0x71aef9]
+	(No symbol) [0x0x6f9bf6]
+	(No symbol) [0x0x6cb38e]
+	(No symbol) [0x0x6cc274]
+	GetHandleVerifier [0x0xaeeda3+2697763]
+	GetHandleVerifier [0x0xae9ec7+2677575]
+	GetHandleVerifier [0x0x894194+228884]
+	GetHandleVerifier [0x0x8849f8+165496]
+	GetHandleVerifier [0x0x88b18d+192013]
+	GetHandleVerifier [0x0x8747d8+99416]
+	GetHandleVerifier [0x0x874972+99826]
+	GetHandleVerifier [0x0x85ebea+10346]
+	BaseThreadInitThunk [0x0x750f5d49+25]
+	RtlInitializeExceptionChain [0x0x773ad6db+107]
+	RtlGetAppContainerNamedObjectPath [0x0x773ad661+561]
+
+
+────────────────────────────────────────────────────────────────────────────────
+
+────────────────────────────────────────────────────────────────────────────────
+GUIA: 32973464
+Data/Hora: 05/10/2025 17:24:03
+Motivo: Falha no processo de anexo
+────────────────────────────────────────────────────────────────────────────────
+
+
+================================================================================
+RESUMO DE FALHAS
+================================================================================
+
+Total de falhas registradas: 2
+
+Guias que necessitam verificação manual:
+1. Guia N/A - Erro no fluxo de anexo
+2. Guia 32973464 - Falha no processo de anexo

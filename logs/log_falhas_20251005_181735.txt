@@ -1,0 +1,65 @@
+================================================================================
+LOG DE FALHAS - AUTOMAÇÃO PORTO SEGURO
+Data/Hora: 05/10/2025 18:17:35
+================================================================================
+
+
+────────────────────────────────────────────────────────────────────────────────
+GUIA: 32866826
+Data/Hora: 05/10/2025 18:23:02
+Motivo: Erro inesperado no fluxo
+
+Traceback:
+Traceback (most recent call last):
+  File "c:\Users\kelvi\Downloads\Automacao-Clinica-Odontologica\PortoSeguro\main.py", line 394, in processar_guias_da_planilha
+    bot.navegar_meus_tratamentos()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "c:\Users\kelvi\Downloads\Automacao-Clinica-Odontologica\PortoSeguro\main.py", line 125, in navegar_meus_tratamentos
+    self.driver.execute_script("arguments[0].click();", menu)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\kelvi\Downloads\Automacao-Clinica-Odontologica\.venv\Lib\site-packages\selenium\webdriver\remote\webdriver.py", line 555, in execute_script
+    return self.execute(command, {"script": script, "args": converted_args})["value"]
+           ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\kelvi\Downloads\Automacao-Clinica-Odontologica\.venv\Lib\site-packages\selenium\webdriver\remote\webdriver.py", line 458, in execute
+    self.error_handler.check_response(response)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^
+  File "C:\Users\kelvi\Downloads\Automacao-Clinica-Odontologica\.venv\Lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 232, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.InvalidSessionIdException: Message: invalid session id: session deleted as the browser has closed the connection
+from disconnected: not connected to DevTools
+  (Session info: chrome=140.0.7339.208); For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#invalidsessionidexception
+Stacktrace:
+	GetHandleVerifier [0x0x123c333+65459]
+	GetHandleVerifier [0x0x123c374+65524]
+	(No symbol) [0x0x105d973]
+	(No symbol) [0x0x104cdf0]
+	(No symbol) [0x0x106b4af]
+	(No symbol) [0x0x10d0775]
+	(No symbol) [0x0x10eaef9]
+	(No symbol) [0x0x10c9bf6]
+	(No symbol) [0x0x109b38e]
+	(No symbol) [0x0x109c274]
+	GetHandleVerifier [0x0x14beda3+2697763]
+	GetHandleVerifier [0x0x14b9ec7+2677575]
+	GetHandleVerifier [0x0x1264194+228884]
+	GetHandleVerifier [0x0x12549f8+165496]
+	GetHandleVerifier [0x0x125b18d+192013]
+	GetHandleVerifier [0x0x12447d8+99416]
+	GetHandleVerifier [0x0x1244972+99826]
+	GetHandleVerifier [0x0x122ebea+10346]
+	BaseThreadInitThunk [0x0x750f5d49+25]
+	RtlInitializeExceptionChain [0x0x773ad6db+107]
+	RtlGetAppContainerNamedObjectPath [0x0x773ad661+561]
+
+
+────────────────────────────────────────────────────────────────────────────────
+
+
+================================================================================
+RESUMO DE FALHAS
+================================================================================
+
+Total de falhas registradas: 1
+
+Guias que necessitam verificação manual:
+1. Guia 32866826 - Erro inesperado no fluxo
