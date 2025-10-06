@@ -1,30 +1,57 @@
 @echo off
 setlocal enabledelayedexpansion
 chcp 65001 >nul 2>&1
-title 🦷 Automação Porto Seguro - Automação v1.0
-color 0B
-mode con: cols=100 lines=35
+title 🦷 Automação Porto Seguro v1.0
+mode con: cols=90 lines=30
+
+:: Habilita cores ANSI no Windows 10+
+reg add HKCU\Console /v VirtualTerminalLevel /t REG_DWORD /d 1 /f >nul 2>&1
+
+:: Definição de cores ANSI
+set "RESET=[0m"
+set "BOLD=[1m"
+set "CYAN=[96m"
+set "BLUE=[94m"
+set "GREEN=[92m"
+set "YELLOW=[93m"
+set "RED=[91m"
+set "MAGENTA=[95m"
+set "WHITE=[97m"
+
+:: Arquivo de controle de instalação
+set "SETUP_FILE=.setup_complete"
 
 :: ===============================================================
 :: BANNER INICIAL
 :: ===============================================================
 cls
 echo.
-echo    ╔════════════════════════════════════════════════════════════════════════════════════════╗
-echo    ║                                                                                        ║
-echo    ║     ██████╗  ██████╗ ██████╗ ████████╗ ██████╗     ███████╗███████╗ ██████╗ ██╗   ██╗██████╗  ██████╗    ║
-echo    ║     ██╔══██╗██╔═══██╗██╔══██╗╚══██╔══╝██╔═══██╗    ██╔════╝██╔════╝██╔════╝ ██║   ██║██╔══██╗██╔═══██╗   ║
-echo    ║     ██████╔╝██║   ██║██████╔╝   ██║   ██║   ██║    ███████╗█████╗  ██║  ███╗██║   ██║██████╔╝██║   ██║   ║
-echo    ║     ██╔═══╝ ██║   ██║██╔══██╗   ██║   ██║   ██║    ╚════██║██╔══╝  ██║   ██║██║   ██║██╔══██╗██║   ██║   ║
-echo    ║     ██║     ╚██████╔╝██║  ██║   ██║   ╚██████╔╝    ███████║███████╗╚██████╔╝╚██████╔╝██║  ██║╚██████╔╝   ║
-echo    ║     ╚═╝      ╚═════╝ ╚═╝  ╚═╝   ╚═╝    ╚═════╝     ╚══════╝╚══════╝ ╚═════╝  ╚═════╝ ╚═╝  ╚═╝ ╚═════╝    ║
-echo    ║                                                                                        ║
-echo    ║                              🦷 SISTEMA DE AUTOMAÇÃO 🦷                               ║
-echo    ║                                   Versão 1.0 - 2025                                    ║
-echo    ║                                                                                        ║
-echo    ╚════════════════════════════════════════════════════════════════════════════════════════╝
+echo %CYAN%   ╔══════════════════════════════════════════════════════════════════════════════╗%RESET%
+echo %CYAN%   ║%RESET%                                                                              %CYAN%║%RESET%
+echo %CYAN%   ║%BLUE%    ██████╗  ██████╗ ██████╗ ████████╗ ██████╗     ███████╗ ██████╗         %CYAN%║%RESET%
+echo %CYAN%   ║%BLUE%    ██╔══██╗██╔═══██╗██╔══██╗╚══██╔══╝██╔═══██╗    ██╔════╝██╔════╝         %CYAN%║%RESET%
+echo %CYAN%   ║%BLUE%    ██████╔╝██║   ██║██████╔╝   ██║   ██║   ██║    ███████╗██║  ███╗        %CYAN%║%RESET%
+echo %CYAN%   ║%BLUE%    ██╔═══╝ ██║   ██║██╔══██╗   ██║   ██║   ██║    ╚════██║██║   ██║        %CYAN%║%RESET%
+echo %CYAN%   ║%BLUE%    ██║     ╚██████╔╝██║  ██║   ██║   ╚██████╔╝    ███████║╚██████╔╝        %CYAN%║%RESET%
+echo %CYAN%   ║%BLUE%    ╚═╝      ╚═════╝ ╚═╝  ╚═╝   ╚═╝    ╚═════╝     ╚══════╝ ╚═════╝         %CYAN%║%RESET%
+echo %CYAN%   ║%RESET%                                                                              %CYAN%║%RESET%
+echo %CYAN%   ║%MAGENTA%              🦷 SISTEMA DE AUTOMAÇÃO DE CREDENCIAMENTO 🦷                   %CYAN%║%RESET%
+echo %CYAN%   ║%YELLOW%                          Versão 1.0 - 2025                                  %CYAN%║%RESET%
+echo %CYAN%   ║%RESET%                                                                              %CYAN%║%RESET%
+echo %CYAN%   ╚══════════════════════════════════════════════════════════════════════════════╝%RESET%
 echo.
-echo                               ⚡ Verificando dependências do sistema...
+
+:: Verifica se já foi feito o setup completo
+if exist "%SETUP_FILE%" (
+    echo %GREEN%   ✓ Dependências já verificadas anteriormente%RESET%
+    echo %CYAN%   ⚡ Modo rápido ativado - Pulando verificações...%RESET%
+    echo.
+    echo %YELLOW%   💡 Para forçar nova verificação, delete o arquivo: %SETUP_FILE%%RESET%
+    timeout /t 2 >nul
+    goto :QUICK_START
+)
+
+echo %YELLOW%                      ⚡ Verificando dependências do sistema...%RESET%
 timeout /t 2 >nul
 echo.
 
@@ -33,23 +60,22 @@ echo.
 :: ===============================================================
 cls
 call :PRINT_HEADER
-echo    [1/4] 🔍 Verificando instalação do Python...
+echo %CYAN%   [1/4]%RESET% %YELLOW%🔍 Verificando instalação do Python...%RESET%
 python --version >nul 2>&1
 if errorlevel 1 (
-    color 0C
     echo.
-    echo    ✗ ERRO: Python não foi encontrado no sistema!
+    echo %RED%   ✗ ERRO: Python não foi encontrado no sistema!%RESET%
     echo.
-    echo    📋 Instruções:
-    echo       1. Acesse: https://www.python.org/downloads/
-    echo       2. Instale Python 3.8 ou superior
-    echo       3. Marque a opção "Add Python to PATH"
+    echo %YELLOW%   📋 Instruções:%RESET%
+    echo %WHITE%      1. Acesse: https://www.python.org/downloads/%RESET%
+    echo %WHITE%      2. Instale Python 3.8 ou superior%RESET%
+    echo %WHITE%      3. Marque a opção "Add Python to PATH"%RESET%
     echo.
     pause
     exit /b 1
 )
 for /f "tokens=*" %%i in ('python --version 2^>^&1') do set PYTHON_VERSION=%%i
-echo    ✓ Python detectado: %PYTHON_VERSION%
+echo %GREEN%   ✓ Python detectado: %PYTHON_VERSION%%RESET%
 timeout /t 1 >nul
 echo.
 
@@ -58,52 +84,83 @@ echo.
 :: ===============================================================
 cls
 call :PRINT_HEADER
-echo    [2/4] 🔍 Verificando gerenciador de pacotes (pip)...
+echo %CYAN%   [2/4]%RESET% %YELLOW%🔍 Verificando gerenciador de pacotes (pip)...%RESET%
 pip --version >nul 2>&1
 if errorlevel 1 (
     echo.
-    echo    ✗ pip não encontrado — tentando reparar automaticamente...
+    echo %YELLOW%   ✗ pip não encontrado — tentando reparar automaticamente...%RESET%
     python -m ensurepip --default-pip
     if errorlevel 1 (
-        color 0C
         echo.
-        echo    ✗ Falha ao reparar pip!
+        echo %RED%   ✗ Falha ao reparar pip!%RESET%
         pause
         exit /b 1
     )
 )
 for /f "tokens=*" %%i in ('pip --version 2^>^&1') do set PIP_VERSION=%%i
-echo    ✓ pip detectado: %PIP_VERSION%
+echo %GREEN%   ✓ pip detectado: %PIP_VERSION%%RESET%
 timeout /t 1 >nul
 echo.
 
 :: ===============================================================
-:: INSTALA DEPENDÊNCIAS
+:: VERIFICA E INSTALA DEPENDÊNCIAS (SE NECESSÁRIO)
 :: ===============================================================
 cls
 call :PRINT_HEADER
-echo    [3/4] 📦 Instalando/atualizando dependências...
+echo %CYAN%   [3/4]%RESET% %YELLOW%📦 Verificando dependências Python...%RESET%
 echo.
-echo    → Atualizando pip, setuptools e wheel...
-python -m pip install --upgrade pip setuptools wheel --quiet --disable-pip-version-check
+
+set "NEED_INSTALL=0"
+
+:: Verifica cada pacote individualmente
+echo %CYAN%   → Verificando selenium...%RESET%
+python -c "import selenium" >nul 2>&1
 if errorlevel 1 (
-    echo    ⚠ Não foi possível atualizar completamente.
+    echo %YELLOW%      • selenium não encontrado%RESET%
+    set "NEED_INSTALL=1"
+) else (
+    echo %GREEN%      ✓ selenium já instalado%RESET%
 )
-echo.
-echo    → Instalando bibliotecas principais...
-pip install selenium openpyxl webdriver-manager --quiet --disable-pip-version-check
+
+echo %CYAN%   → Verificando openpyxl...%RESET%
+python -c "import openpyxl" >nul 2>&1
 if errorlevel 1 (
-    color 0C
+    echo %YELLOW%      • openpyxl não encontrado%RESET%
+    set "NEED_INSTALL=1"
+) else (
+    echo %GREEN%      ✓ openpyxl já instalado%RESET%
+)
+
+echo %CYAN%   → Verificando webdriver-manager...%RESET%
+python -c "import webdriver_manager" >nul 2>&1
+if errorlevel 1 (
+    echo %YELLOW%      • webdriver-manager não encontrado%RESET%
+    set "NEED_INSTALL=1"
+) else (
+    echo %GREEN%      ✓ webdriver-manager já instalado%RESET%
+)
+
+echo.
+
+if "%NEED_INSTALL%"=="1" (
+    echo %YELLOW%   📥 Instalando pacotes faltantes...%RESET%
     echo.
-    echo    ✗ FALHA ao instalar dependências!
-    echo    💡 Sugestões:
-    echo       - Verifique conexão com a internet
-    echo       - Execute este arquivo como Administrador
-    echo       - Tente manualmente: pip install selenium openpyxl webdriver-manager
-    pause
-    exit /b 1
+    pip install selenium openpyxl webdriver-manager --quiet --disable-pip-version-check
+    if errorlevel 1 (
+        echo.
+        echo %RED%   ✗ FALHA ao instalar dependências!%RESET%
+        echo %YELLOW%   💡 Sugestões:%RESET%
+        echo %WHITE%      - Verifique conexão com a internet%RESET%
+        echo %WHITE%      - Execute este arquivo como Administrador%RESET%
+        echo %WHITE%      - Tente manualmente: pip install selenium openpyxl webdriver-manager%RESET%
+        pause
+        exit /b 1
+    )
+    echo %GREEN%   ✓ Dependências instaladas com sucesso!%RESET%
+) else (
+    echo %GREEN%   ✓ Todas as dependências já estão instaladas!%RESET%
 )
-echo    ✓ Dependências instaladas com sucesso!
+
 timeout /t 1 >nul
 echo.
 
@@ -112,53 +169,57 @@ echo.
 :: ===============================================================
 cls
 call :PRINT_HEADER
-echo    [4/4] 📋 Verificando estrutura de arquivos...
+echo %CYAN%   [4/4]%RESET% %YELLOW%📋 Verificando estrutura de arquivos...%RESET%
 echo.
 if not exist "main.py" (
-    color 0C
-    echo    ✗ ERRO: Arquivo principal 'main.py' não encontrado!
+    echo %RED%   ✗ ERRO: Arquivo principal 'main.py' não encontrado!%RESET%
     echo.
-    echo    Coloque este script na mesma pasta do arquivo Python principal.
+    echo %WHITE%   Coloque este script na mesma pasta do arquivo Python principal.%RESET%
     pause
     exit /b 1
 )
-echo    ✓ Arquivo main.py ............. [OK]
+echo %GREEN%   ✓ Arquivo main.py ............. [OK]%RESET%
 
 if not exist "arquivos" (
     mkdir arquivos >nul 2>&1
-    echo    ✓ Pasta 'arquivos' criada automaticamente
+    echo %GREEN%   ✓ Pasta 'arquivos' criada automaticamente%RESET%
 ) else (
-    echo    ✓ Pasta 'arquivos' ........ [OK]
+    echo %GREEN%   ✓ Pasta 'arquivos' ........ [OK]%RESET%
 )
 if not exist "logs" (
     mkdir logs >nul 2>&1
 )
-echo    ✓ Pasta 'logs' ............ [OK]
+echo %GREEN%   ✓ Pasta 'logs' ............ [OK]%RESET%
 echo.
+
+:: Cria arquivo de controle para pular verificações na próxima vez
+echo Setup completo em %date% %time% > "%SETUP_FILE%"
+echo %GREEN%   ✓ Configuração salva - próximas execuções serão mais rápidas!%RESET%
+echo.
+
 timeout /t 2 >nul
 
 :: ===============================================================
-:: INICIA O SISTEMA
+:: INICIA O SISTEMA (MODO RÁPIDO)
 :: ===============================================================
-color 0A
+:QUICK_START
 cls
 call :PRINT_HEADER
 echo.
-echo    ╔════════════════════════════════════════════════════════════════════════════════════════╗
-echo    ║                                                                                        ║
-echo    ║                            ✅ SISTEMA PRONTO PARA EXECUÇÃO ✅                          ║
-echo    ║                                                                                        ║
-echo    ╚════════════════════════════════════════════════════════════════════════════════════════╝
+echo %GREEN%   ╔══════════════════════════════════════════════════════════════════════════════╗%RESET%
+echo %GREEN%   ║%RESET%                                                                              %GREEN%║%RESET%
+echo %GREEN%   ║%BOLD%%WHITE%                      ✅ SISTEMA PRONTO PARA EXECUÇÃO ✅                      %RESET%%GREEN%║%RESET%
+echo %GREEN%   ║%RESET%                                                                              %GREEN%║%RESET%
+echo %GREEN%   ╚══════════════════════════════════════════════════════════════════════════════╝%RESET%
 echo.
-echo                           ⚡ Iniciando automação em 3 segundos...
-timeout /t 3 >nul
+echo %YELLOW%                      ⚡ Iniciando automação em 2 segundos...%RESET%
+timeout /t 2 >nul
 
-color 0B
 cls
 echo.
-echo    ════════════════════════════════════════════════════════════════════════════════════════
-echo                                 🚀 EXECUTANDO SISTEMA 🚀
-echo    ════════════════════════════════════════════════════════════════════════════════════════
+echo %CYAN%   ══════════════════════════════════════════════════════════════════════════════%RESET%
+echo %BOLD%%MAGENTA%                            🚀 EXECUTANDO SISTEMA 🚀%RESET%
+echo %CYAN%   ══════════════════════════════════════════════════════════════════════════════%RESET%
 echo.
 
 python main.py
@@ -166,14 +227,12 @@ set EXIT_CODE=%ERRORLEVEL%
 
 echo.
 if %EXIT_CODE% EQU 0 (
-    color 0A
-    echo    ✅ Sistema encerrado com sucesso!
+    echo %GREEN%   ✅ Sistema encerrado com sucesso!%RESET%
 ) else (
-    color 0C
-    echo    ⚠ Sistema encerrado com erros (código: %EXIT_CODE%)
+    echo %RED%   ⚠ Sistema encerrado com erros (código: %EXIT_CODE%)%RESET%
 )
 echo.
-echo    ✅ Obrigado por utilizar!
+echo %CYAN%   ✅ Obrigado por utilizar!%RESET%
 echo.
 pause
 exit /b %EXIT_CODE%
@@ -183,8 +242,8 @@ exit /b %EXIT_CODE%
 :: ===============================================================
 :PRINT_HEADER
 echo.
-echo    ════════════════════════════════════════════════════════════════════════════════════════
-echo                            🦷 AUTOMAÇÃO DO SISTEMA DE CREDENCIAMENTO - PORTO SEGURO 🦷
-echo    ════════════════════════════════════════════════════════════════════════════════════════
+echo %CYAN%   ══════════════════════════════════════════════════════════════════════════════%RESET%
+echo %BOLD%%MAGENTA%           🦷 AUTOMAÇÃO DE CREDENCIAMENTO - PORTO SEGURO 🦷%RESET%
+echo %CYAN%   ══════════════════════════════════════════════════════════════════════════════%RESET%
 echo.
 goto :eof
