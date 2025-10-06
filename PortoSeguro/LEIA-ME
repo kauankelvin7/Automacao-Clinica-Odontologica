@@ -1,0 +1,307 @@
+╔══════════════════════════════════════════════════════════════════════════════╗
+║                                                                                                           ║
+║           🦷 SISTEMA DE AUTOMAÇÃO PORTO SEGURO - VERSÃO 1.0 🦷                                           ║
+║                                                                                                           ║
+║                         GUIA DE INSTALAÇÃO E USO                                                          ║
+║                                                                                                           ║
+╚══════════════════════════════════════════════════════════════════════════════╝
+
+
+═══════════════════════════════════════════════════════════════════════════════
+📋 ÍNDICE
+═══════════════════════════════════════════════════════════════════════════════
+
+1. REQUISITOS DO SISTEMA
+2. INSTALAÇÃO RÁPIDA (PASSO A PASSO)
+3. ESTRUTURA DE PASTAS
+4. COMO USAR O SISTEMA
+5. SOLUÇÃO DE PROBLEMAS
+6. SUPORTE
+
+
+═══════════════════════════════════════════════════════════════════════════════
+🖥️  1. REQUISITOS DO SISTEMA
+═══════════════════════════════════════════════════════════════════════════════
+
+✅ Windows 10 ou 11 (64 bits)
+✅ Python 3.8 ou superior
+✅ Conexão com a internet (para instalação inicial)
+✅ Google Chrome instalado
+✅ 4GB de RAM (mínimo)
+✅ 500MB de espaço livre em disco
+
+
+═══════════════════════════════════════════════════════════════════════════════
+🚀 2. INSTALAÇÃO RÁPIDA (PRIMEIRA VEZ)
+═══════════════════════════════════════════════════════════════════════════════
+
+PASSO 1: INSTALAR PYTHON
+─────────────────────────────────────────────────────────────────────────────
+
+   1. Acesse: https://www.python.org/downloads/
+   
+   2. Clique em "Download Python 3.x.x"
+   
+   3. Execute o instalador baixado
+   
+   4. ⚠️ IMPORTANTE: Marque a opção "Add Python to PATH"
+      └── Esta opção é ESSENCIAL para o funcionamento
+   
+   5. Clique em "Install Now"
+   
+   6. Aguarde a conclusão e clique em "Close"
+
+
+PASSO 2: EXECUTAR O SISTEMA
+─────────────────────────────────────────────────────────────────────────────
+
+   1. Localize o arquivo: "iniciar_bot.bat"
+   
+   2. Clique duas vezes para executar
+   
+   3. Na primeira execução, o sistema irá:
+      ✓ Verificar o Python
+      ✓ Instalar dependências automaticamente
+      ✓ Configurar o ambiente
+      (Isso leva de 2 a 5 minutos)
+   
+   4. Após a instalação, o sistema abrirá automaticamente
+
+
+═══════════════════════════════════════════════════════════════════════════════
+📁 3. ESTRUTURA DE PASTAS
+═══════════════════════════════════════════════════════════════════════════════
+
+Sua pasta deve estar organizada assim:
+
+    📂 PortoSeguro/
+    ├── 🔵 INICIAR_SISTEMA.bat .......... [Clique aqui para iniciar]
+    ├── 📄 LEIA-ME-PRIMEIRO.txt ......... [Este arquivo]
+    ├── 🐍 main.py ...................... [Código do sistema]
+    ├── 📊 sua_planilha.xlsx ............ [Planilha com IDs das guias]
+    │
+    ├── 📂 arquivos/ .................... [Coloque aqui os anexos]
+    │   ├── RX123456.jpg
+    │   ├── LAUDO123456.pdf
+    │   └── GUIA123456.pdf
+    │
+    └── 📂 logs/ ........................ [Gerado automaticamente]
+        └── log_falhas_20250106_143025.txt
+
+
+IMPORTANTE SOBRE A PLANILHA:
+────────────────────────────────────────────────────────────────────────────
+
+   ✓ Deve ser um arquivo .xlsx (Excel)
+   ✓ Deve haver APENAS UMA planilha na pasta
+   ✓ Os IDs das guias devem estar na COLUNA A
+   ✓ Não precisa ter cabeçalho
+   
+   Exemplo:
+   ┌──────────────┐
+   │ A            │
+   ├──────────────┤
+   │ 123456789001 │
+   │ 123456789002 │
+   │ 123456789003 │
+   └──────────────┘
+
+
+IMPORTANTE SOBRE OS ARQUIVOS:
+────────────────────────────────────────────────────────────────────────────
+
+   Os arquivos serão identificados automaticamente pelo ID da guia.
+   
+   Nomenclatura recomendada:
+   
+   🔹 Raio-X ......... RX123456.jpg ou RF123456.jpg ou RI123456.jpg
+   🔹 Laudos ......... LAUDO123456.pdf
+   🔹 Guias .......... GUIA123456.pdf ou G123456.pdf
+   🔹 Outros ......... 123456_documento.pdf
+   
+   ⚠️ O sistema busca pelos últimos 4 dígitos do ID também!
+
+
+═══════════════════════════════════════════════════════════════════════════════
+📖 4. COMO USAR O SISTEMA
+═══════════════════════════════════════════════════════════════════════════════
+
+EXECUÇÃO NORMAL:
+────────────────────────────────────────────────────────────────────────────
+
+   1. Prepare sua planilha com os IDs das guias
+   
+   2. Coloque todos os arquivos (RX, laudos, guias) na pasta "arquivos/"
+   
+   3. Execute: iniciar_bot.bat
+   
+   4. Aguarde as verificações automáticas
+   
+   5. O menu interativo será exibido:
+   
+      ╔═══════════════════════════════════════╗
+      ║         MENU PRINCIPAL                ║
+      ╚═══════════════════════════════════════╝
+      
+      [1] ▶  Iniciar Processamento
+      [2] 📄 Visualizar Logs
+      [3] 📊 Status do Sistema
+      [4] ℹ  Sobre o Sistema
+      [0] ✖  Sair
+   
+   6. Digite "1" e pressione ENTER para iniciar
+   
+   7. Confirme o início do processamento
+   
+   8. Aguarde! O sistema fará tudo automaticamente:
+      ✓ Login no portal
+      ✓ Busca das guias
+      ✓ Confirmação de procedimentos
+      ✓ Anexação de arquivos
+      ✓ Submissão para pagamento
+
+
+DURANTE A EXECUÇÃO:
+────────────────────────────────────────────────────────────────────────────
+
+   ✓ O navegador Chrome abrirá automaticamente
+   ✓ Não feche o navegador manualmente
+   ✓ Não mexa no mouse/teclado enquanto o sistema trabalha
+   ✓ Você pode interromper pressionando Ctrl+C
+   ✓ Acompanhe o progresso no console
+
+
+APÓS A EXECUÇÃO:
+────────────────────────────────────────────────────────────────────────────
+
+   ✓ Um relatório será exibido no console
+   ✓ Um log detalhado será salvo na pasta "logs/"
+   ✓ Guias com falha serão listadas para revisão manual
+   ✓ O navegador fechará automaticamente
+
+
+═══════════════════════════════════════════════════════════════════════════════
+🔧 5. SOLUÇÃO DE PROBLEMAS
+═══════════════════════════════════════════════════════════════════════════════
+
+PROBLEMA: "Python não encontrado"
+────────────────────────────────────────────────────────────────────────────
+   SOLUÇÃO:
+   1. Reinstale o Python marcando "Add Python to PATH"
+   2. OU adicione Python ao PATH manualmente:
+      - Abra "Configurações do Sistema" → "Variáveis de Ambiente"
+      - Adicione: C:\Python3x\ e C:\Python3x\Scripts\
+
+
+PROBLEMA: "pip não encontrado"
+────────────────────────────────────────────────────────────────────────────
+   SOLUÇÃO:
+   1. Abra o Prompt de Comando como Administrador
+   2. Execute: python -m ensurepip --default-pip
+   3. Execute: python -m pip install --upgrade pip
+
+
+PROBLEMA: "Falha ao instalar dependências"
+────────────────────────────────────────────────────────────────────────────
+   SOLUÇÃO:
+   1. Verifique sua conexão com a internet
+   2. Desative temporariamente o antivírus
+   3. Execute o .bat como Administrador:
+      - Botão direito → "Executar como administrador"
+   4. Tente instalar manualmente:
+      - Abra o Prompt de Comando
+      - Execute: pip install selenium openpyxl webdriver-manager
+
+
+PROBLEMA: "Planilha não encontrada"
+────────────────────────────────────────────────────────────────────────────
+   SOLUÇÃO:
+   1. Certifique-se de ter um arquivo .xlsx na pasta
+   2. Deve haver APENAS UMA planilha .xlsx
+   3. Renomeie se necessário para "guias.xlsx"
+
+
+PROBLEMA: "Arquivos não estão sendo encontrados"
+────────────────────────────────────────────────────────────────────────────
+   SOLUÇÃO:
+   1. Verifique se os arquivos estão na pasta "arquivos/"
+   2. Certifique-se de que os nomes contêm o ID da guia
+   3. Use pelo menos os últimos 4 dígitos do ID no nome
+
+
+PROBLEMA: "Guia não encontrada no portal"
+────────────────────────────────────────────────────────────────────────────
+   SOLUÇÃO:
+   1. Verifique se o ID está correto na planilha
+   2. Confirme se a guia existe no portal Porto Seguro
+   3. Verifique se você tem permissão para acessar a guia
+
+
+PROBLEMA: Sistema trava ou congela
+────────────────────────────────────────────────────────────────────────────
+   SOLUÇÃO:
+   1. Pressione Ctrl+C para interromper
+   2. Feche o navegador manualmente
+   3. Execute novamente
+   4. Se persistir, reinicie o computador
+
+
+═══════════════════════════════════════════════════════════════════════════════
+📞 6. SUPORTE E INFORMAÇÕES
+═══════════════════════════════════════════════════════════════════════════════
+
+LOGS DO SISTEMA:
+────────────────────────────────────────────────────────────────────────────
+
+   Todos os logs são salvos automaticamente em:
+   📂 logs/log_falhas_[DATA]_[HORA].txt
+   
+   Os logs contêm:
+   ✓ Timestamp de cada operação
+   ✓ Guias processadas com sucesso
+   ✓ Guias com falha e motivo
+   ✓ Detalhes técnicos para diagnóstico
+
+
+DICAS DE PERFORMANCE:
+────────────────────────────────────────────────────────────────────────────
+
+   ✓ Não abra outros programas pesados durante a execução
+   ✓ Mantenha o Chrome atualizado
+   ✓ Processe em lotes de até 50 guias por vez
+   ✓ Execute em horários de menor tráfego no portal
+
+
+SEGURANÇA:
+────────────────────────────────────────────────────────────────────────────
+
+   ✓ Suas credenciais estão armazenadas localmente no código
+   ✓ Nenhuma informação é enviada para servidores externos
+   ✓ O sistema opera apenas no portal Porto Seguro
+   ✓ Mantenha backups regulares dos seus arquivos
+
+
+ATUALIZAÇÕES:
+────────────────────────────────────────────────────────────────────────────
+
+   Para atualizar o sistema:
+   1. Faça backup de suas planilhas e arquivos
+   2. Substitua apenas o arquivo "main.py"
+   3. Execute normalmente
+
+
+═══════════════════════════════════════════════════════════════════════════════
+
+                        ✅ SISTEMA PRONTO PARA USO! ✅
+
+                     Basta executar: iniciar_bot.bat
+
+═══════════════════════════════════════════════════════════════════════════════
+
+
+                    	 🦷 KauanKelvinDev - 2025 🦷
+			https://github.com/kauankelvin7
+			   kauansantos1831@gmail.com
+                          Desenvolvido com excelência!
+                              
+═══════════════════════════════════════════════════════════════════════════════
