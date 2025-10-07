@@ -203,8 +203,11 @@ class PortoSeguroBot:
         print(f"\n{Cores.BOLD}Processando guia: {id_guia}{Cores.RESET}")
         try:
             campo_busca = self.wait.until(EC.presence_of_element_located((By.ID, "searchGTO")))
+            time.sleep(5)
             self._type_like_human(campo_busca, id_guia)
             self._human_delay()
+            self.handle_overlays()
+            time.sleep(2)
             campo_busca.send_keys(Keys.ENTER)
             self.handle_overlays()
             link_guia = self.wait.until(EC.element_to_be_clickable((By.XPATH, f"//a[text()='{id_guia}']")))
@@ -244,6 +247,7 @@ class PortoSeguroBot:
             botao_guia = wait_curto.until(EC.element_to_be_clickable((By.ID, "btnGuia")))
             exibir_mensagem_info("Modal de faturamento detectado")
             self.driver.execute_script("arguments[0].click();", botao_guia)
+            time.sleep(9)
             self.handle_overlays()
         except TimeoutException:
             pass
@@ -286,8 +290,8 @@ class PortoSeguroBot:
             self.handle_overlays()
             time.sleep(9)
             self._handle_faturamento_guia_modal()
-            exibir_mensagem_sucesso("Procedimento confirmado")
             time.sleep(6)
+            exibir_mensagem_sucesso("Procedimento confirmado")
             return True
         except Exception as e:
             exibir_mensagem_erro(f"Erro ao confirmar: {e}")
@@ -381,6 +385,9 @@ class PortoSeguroBot:
                 self._abrir_modal_anexos()
                 self._anexar_um_arquivo(anexo)
                 self._fechar_modal_anexos()
+                time.sleep(7)
+                self.handle_overlays()
+
             exibir_mensagem_sucesso("Todos os arquivos anexados")
             return True
         except Exception as e:
