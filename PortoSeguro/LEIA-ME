@@ -123,42 +123,39 @@ IMPORTANTE SOBRE OS ARQUIVOS:
 
 
 ═══════════════════════════════════════════════════════════════════════════════
-📖 4. COMO USAR O SISTEMA
+📖 4. COMO USAR O SISTEMA (NOVA VERSÃO 2.1)
 ═══════════════════════════════════════════════════════════════════════════════
+
+PASSO 0: CONFIGURAÇÃO DE SEGURANÇA (OBRIGATÓRIO)
+────────────────────────────────────────────────────────────────────────────
+
+   1. Localize o arquivo ".env.example"
+   
+   2. Renomeie para ".env" (Remova o ".example")
+   
+   3. Abra o arquivo ".env" com o Bloco de Notas
+   
+   4. Insira as credenciais da clínica nos campos:
+      LOGIN_COMPLETO=xxxx
+      SENHA_COMPLETO=xxxx
+   
+   5. Salve e feche o arquivo.
 
 EXECUÇÃO NORMAL:
 ────────────────────────────────────────────────────────────────────────────
 
-   1. Prepare sua planilha com os IDs das guias
+   1. Prepare sua planilha com os IDs das guias (Coluna A)
    
-   2. Coloque todos os arquivos (RX, laudos, guias) na pasta "arquivos/"
+   2. Coloque os arquivos (RX, laudos, guias) na pasta "arquivos/"
    
    3. Execute: iniciar_bot.bat
    
-   4. Aguarde as verificações automáticas
-   
-   5. O menu interativo será exibido:
-   
-      ╔═══════════════════════════════════════╗
-      ║         MENU PRINCIPAL                ║
-      ╚═══════════════════════════════════════╝
-      
-      [1] ▶  Iniciar Processamento
-      [2] 📄 Visualizar Logs
-      [3] 📊 Status do Sistema
-      [4] ℹ  Sobre o Sistema
-      [0] ✖  Sair
-   
-   6. Digite "1" e pressione ENTER para iniciar
-   
-   7. Confirme o início do processamento
-   
-   8. Aguarde! O sistema fará tudo automaticamente:
-      ✓ Login no portal
-      ✓ Busca das guias
-      ✓ Confirmação de procedimentos
-      ✓ Anexação de arquivos
-      ✓ Submissão para pagamento
+   4. O menu interativo será exibido:
+      [1] ▶ Iniciar Processamento (Usuário Completo)
+      [2] ▶ Iniciar Processamento (Usuário Simplificado)
+      ...
+
+   5. Aguarde! O sistema fará o login e processará as guias automaticamente.
 
 
 DURANTE A EXECUÇÃO:
@@ -294,14 +291,16 @@ ATUALIZAÇÕES:
 
                         ✅ SISTEMA PRONTO PARA USO! ✅
 
-                     Basta executar: iniciar_bot.bat
+                     Basta configurar o .env e executar: 
+			   iniciar_bot.bat
+
+            Para documentação técnica completa, veja o README.md
 
 ═══════════════════════════════════════════════════════════════════════════════
 
-
                     	 🦷 KauanKelvinDev - 2025 🦷
 			https://github.com/kauankelvin7
-			   kauansantos1831@gmail.com
+			   kelvinkauan722@gmail.com
                           Desenvolvido com excelência!
-                              
+                               
 ═══════════════════════════════════════════════════════════════════════════════

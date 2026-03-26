@@ -1,0 +1,4 @@
+selenium
+openpyxl
+webdriver-manager
+python-dotenv

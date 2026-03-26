@@ -140,19 +140,28 @@ if errorlevel 1 (
     echo %GREEN%      ✓ webdriver-manager já instalado%RESET%
 )
 
+echo %CYAN%   → Verificando python-dotenv...%RESET%
+python -c "import dotenv" >nul 2>&1
+if errorlevel 1 (
+    echo %YELLOW%      • python-dotenv não encontrado%RESET%
+    set "NEED_INSTALL=1"
+) else (
+    echo %GREEN%      ✓ python-dotenv já instalado%RESET%
+)
+
 echo.
 
 if "%NEED_INSTALL%"=="1" (
     echo %YELLOW%   📥 Instalando pacotes faltantes...%RESET%
     echo.
-    pip install selenium openpyxl webdriver-manager --quiet --disable-pip-version-check
+    pip install selenium openpyxl webdriver-manager python-dotenv --quiet --disable-pip-version-check
     if errorlevel 1 (
         echo.
         echo %RED%   ✗ FALHA ao instalar dependências!%RESET%
         echo %YELLOW%   💡 Sugestões:%RESET%
         echo %WHITE%      - Verifique conexão com a internet%RESET%
         echo %WHITE%      - Execute este arquivo como Administrador%RESET%
-        echo %WHITE%      - Tente manualmente: pip install selenium openpyxl webdriver-manager%RESET%
+        echo %WHITE%      - Tente manualmente: pip install selenium openpyxl webdriver-manager python-dotenv%RESET%
         pause
         exit /b 1
     )
@@ -171,8 +180,8 @@ cls
 call :PRINT_HEADER
 echo %CYAN%   [4/4]%RESET% %YELLOW%📋 Verificando estrutura de arquivos...%RESET%
 echo.
-if not exist "main.py" (
-    echo %RED%   ✗ ERRO: Arquivo principal 'main.py' não encontrado!%RESET%
+if not exist "src\main.py" (
+    echo %RED%   ✗ ERRO: Arquivo principal 'src\main.py' não encontrado!%RESET%
     echo.
     echo %WHITE%   Coloque este script na mesma pasta do arquivo Python principal.%RESET%
     pause
@@ -222,7 +231,7 @@ echo %BOLD%%MAGENTA%                            🚀 EXECUTANDO SISTEMA 🚀%RES
 echo %CYAN%   ══════════════════════════════════════════════════════════════════════════════%RESET%
 echo.
 
-python main.py
+python src/main.py
 set EXIT_CODE=%ERRORLEVEL%
 
 echo.
